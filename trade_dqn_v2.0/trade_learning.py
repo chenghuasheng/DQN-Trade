@@ -69,7 +69,7 @@ class TradeLearning(object):
             batch_packaged_data = TradeInputData.package_data(batch_data)
             batch_label = self.__get_qvalues(batch_data)
             # 填充数据，并开始一步次训练
-            feed_dict = self.eval_net.fill_feed_dict(batch_packaged_data, batch_label, 1.0)
+            feed_dict = self.eval_net.fill_feed_dict(batch_packaged_data, batch_label, 0.8)
             _, loss_value = self.sess.run([trainer, loss], feed_dict=feed_dict)
             duration = time.time() - start_time
             # 每100步训练输出一次损失值和时间
